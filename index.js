@@ -15,7 +15,11 @@ restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
   
-  return res.json({fulfillmentText: "success"});
+  //return res.json({fulfillmentText: "success"});
+  return res.end(JSON.stringify({
+     fulfillmentText: "success"
+    }));
+  
 });
 
 restService.post("/audio", function(req, res) {
