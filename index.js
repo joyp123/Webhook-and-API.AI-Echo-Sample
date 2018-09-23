@@ -14,11 +14,24 @@ restService.use(
 restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
+	
+	
+	consumeRest(function(data){
+    console.log("***************consumeRest Invoked********** "+JSON.stringify(data));
+
+   
+    var jsonContent1 = JSON.parse(JSON.stringify(data));
+    
+    
+   return res.json({fulfillmentText: jsonContent1.status});
+    
+  });
+	
+	
+	
   
   //return res.json({fulfillmentText: "success"});
-  return res.end(JSON.stringify({
-     fulfillmentText: "success"
-    }));
+ 
   
 });
 
@@ -193,3 +206,25 @@ restService.post("/slack-test", function(req, res) {
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
+
+ function consumeRest(callback){
+    
+    
+  console.log("***************consumeRest Invoked**********");
+  var request = require("request");
+  var options = { method: 'POST',
+    url: 'https://www.pt.appxplorer.nxp.com:443/axstoreserver/rest/promotion/list/forcards',
+    headers: 
+     { 'postman-token': 'e3e22f11-1143-2639-c147-2ccf9f4d8d3d',
+       'cache-control': 'no-cache',
+       'content-type': 'application/json' },
+    body: { promotionRequest: { cardIds: [ 1109 ] } },
+    json: true };
+   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+   console.log("***************Before Request**********");
+   request(options, function (error, response, body) {
+    console.log("***************Inside request**********");
+   
+       callback(body);
+   });
+ }
