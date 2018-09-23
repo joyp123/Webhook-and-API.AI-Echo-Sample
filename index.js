@@ -23,14 +23,14 @@ restService.post("/echo", function(req, res) {
     var jsonContent1 = JSON.parse(JSON.stringify(data));
     
     
-   return res.json({fulfillmentText: jsonContent1.status});
+   //return res.json({fulfillmentText: jsonContent1.status});
     
   });
 	
 	
 	
   
-  //return res.json({fulfillmentText: "success"});
+  return res.json({fulfillmentText: "success"});
  
   
 });
