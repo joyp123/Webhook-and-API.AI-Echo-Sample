@@ -21,7 +21,7 @@ restService.post("/echo", function(req, res) {
 	
 	
   
-  return res.json({fulfillmentText: "success"});
+  return res.json({fulfillmentText: "Application Id:12345 \r\n Application Name:Test"});
  
   
 });
