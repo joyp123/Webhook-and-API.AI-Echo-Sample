@@ -16,16 +16,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
 	
 	
-	consumeRest(function(data){
-    console.log("***************consumeRest Invoked********** "+JSON.stringify(data));
-
-   
-    var jsonContent1 = JSON.parse(JSON.stringify(data));
-    
-    
-   //return res.json({fulfillmentText: jsonContent1.status});
-    
-  });
+	
 	
 	
 	
